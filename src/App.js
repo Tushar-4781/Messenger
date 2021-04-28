@@ -39,11 +39,22 @@ function App() {
     setInput('');
   }
   
+
+
   return (
     <div className="App">
       <img src="https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100"/>
       <h1>Deeksha Forum</h1>
       <h2>Welcome {username}</h2>
+      <div id="containerX">
+        <FlipMove>
+          {
+            messages.map(({id,message}) => {
+              return <Message key={id} username={username} message={message}/>
+            })
+          }
+        </FlipMove>
+      </div>
       <form className="app_form">
         <FormControl className="app_formControl">
           <Input className="app_input" placeholder="Enter a message..." value={input} onChange={event => setInput(event.target.value)}/>
@@ -53,14 +64,6 @@ function App() {
           </IconButton>
         </FormControl>
       </form>
-      
-      <FlipMove>
-        {
-          messages.map(({id,message}) => {
-            return <Message key={id} username={username} message={message}/>
-          })
-        }
-      </FlipMove>
     </div>
   );
 }
